@@ -2,6 +2,11 @@ from clients.api_client import ApiClient
 from httpx import Response
 from typing import TypedDict
 
+from clients.private_http_builder import get_private_http_builder, AuthenticationUserDict
+from clients.users.private_users_client import User
+from testdata.files.files_client import File
+
+
 class GetCoursesRequestDict(TypedDict):
     """
     Описание структуры запроса на получение списка курсов.
@@ -20,6 +25,27 @@ class CreateCoursesRequestDict(TypedDict):
     previewFileId: str
     createdByUserId: str
 
+class Course(TypedDict):
+    """
+    Описание структуры курса.
+    """
+    id: str
+    title: str
+    maxScore: int
+    minScore: int
+    description: str
+    previewFile: File
+    estimatedTime: str
+    createdByUser: User
+
+
+class CreateCoursesResponse(TypedDict):
+    """
+    Описание структуры ответа создания курса.
+    """
+    course: Course
+
+
 class UpdateCoursesRequestDict(TypedDict):
     """
     Описание структуры запроса на обновление курса.
@@ -33,6 +59,9 @@ class UpdateCoursesRequestDict(TypedDict):
 
 
 class CoursesClient(ApiClient):
+    """
+    Клиент для работы с /api/v1/courses
+    """
 
     def get_courses_api(self, query: GetCoursesRequestDict) -> Response:
         """
@@ -59,6 +88,10 @@ class CoursesClient(ApiClient):
         """
         return self.post("/api/v1/courses", json=request)
 
+    def create_course(self, request: CreateCoursesRequestDict) -> CreateCoursesResponse:
+        response = self.create_course_api(request)
+        return response.json()
+
     def update_course_api(self, course_id: int, request: UpdateCoursesRequestDict) -> Response:
         """
         Метод обновления курса.
@@ -76,3 +109,5 @@ class CoursesClient(ApiClient):
         """
         return self.delete(f"/api/v1/courses/{course_id}")
 
+def get_private_course_client(user: AuthenticationUserDict) -> CoursesClient:
+    return CoursesClient(client=get_private_http_builder(user))

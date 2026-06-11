@@ -1,6 +1,11 @@
 from typing import TypedDict
 from httpx import Response
+
+from authentication.authentication_client import AuthenticationClient
 from clients.api_client import ApiClient
+from clients.private_http_builder import AuthenticationUserDict, get_private_http_builder
+
+
 
 class UpdateUserRequestDict(TypedDict):
     """
@@ -10,6 +15,22 @@ class UpdateUserRequestDict(TypedDict):
     lastName: str | None
     firstName: str | None
     middleName: str | None
+
+class User(TypedDict):
+    """
+    Описание структуры пользователя.
+    """
+    id: str
+    email: str
+    lastName: str
+    firstName: str
+    middleName: str
+
+class GetUserResponseDict(TypedDict):
+    """
+    Описание структуры ответа получения пользователя.
+    """
+    user: User
 
 class PrivateUsersClient(ApiClient):
     """
@@ -33,6 +54,10 @@ class PrivateUsersClient(ApiClient):
         """
         return self.get(f"/api/v1/users/{user_id}")
 
+    def get_user(self, user_id: str) -> GetUserResponseDict:
+        response = self.get(f"/api/v1/users/{user_id}")
+        return response.json()
+
     def update_user_api(self, user_id, request: UpdateUserRequestDict) -> Response:
         """
         Метод обновления пользователя по идентификатору.
@@ -52,3 +77,5 @@ class PrivateUsersClient(ApiClient):
         """
         return self.delete(f"/api/v1/users/{user_id}")
 
+def get_private_users_client(user: AuthenticationUserDict) -> PrivateUsersClient:
+    return PrivateUsersClient(client=get_private_http_builder(user))
