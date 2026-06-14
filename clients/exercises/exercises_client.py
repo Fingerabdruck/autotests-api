@@ -1,8 +1,11 @@
 from clients.api_client import ApiClient
 from httpx import Response
 from typing import TypedDict
+
+from clients.exercises.exercise_client_new import UpdateExerciseResponseDict
 from clients.users.private_users_client import User
 from clients.private_http_builder import get_private_http_builder,  AuthenticationUserDict
+
 class Exercise(TypedDict):
 
     id: str
@@ -46,6 +49,12 @@ class CreateExerciseRequestDict(TypedDict):
     description: str
     estimatedTime: str | None
 
+class CreateExerciseResponseDict(TypedDict):
+    """
+    Описание структуры ответа создания задания.
+    """
+    exercise: Exercise
+
 class UpdateExerciseRequestDict(TypedDict):
     """
     Структура тела запроса для полного обновления упражнения (PATCH).
@@ -59,6 +68,8 @@ class UpdateExerciseRequestDict(TypedDict):
     description: str
     estimatedTime: str
 
+class UpdateExerciseResponse(TypedDict):
+    exercise: Exercise
 
 class ExercisesClient(ApiClient):
     """
@@ -103,7 +114,7 @@ class ExercisesClient(ApiClient):
         """
         return self.post("/api/v1/exercises", json=request)
 
-    def create_exercise(self, request: CreateExerciseRequestDict) -> Exercise:
+    def create_exercise(self, request: CreateExerciseRequestDict) -> CreateExerciseResponseDict:
         response = self.create_exercise_api(request)
         return response.json()
 
@@ -118,7 +129,7 @@ class ExercisesClient(ApiClient):
         """
         return self.patch(f"/api/v1/exercises/{exercise_id}", json=request)
 
-    def update_exercise(self, exercise_id: str, request: UpdateExerciseRequestDict) -> Exercise:
+    def update_exercise(self, exercise_id: str, request: UpdateExerciseRequestDict) -> UpdateExerciseResponseDict:
         response = self.update_exercise_api(exercise_id, request)
         return response.json()
 
