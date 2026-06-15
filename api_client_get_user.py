@@ -1,6 +1,6 @@
-from clients.private_http_builder import AuthenticationUserDict
+from clients.private_http_builder import AuthenticationUserSchema
 from clients.users.private_users_client import get_private_users_client
-from clients.users.public_users_client import get_public_user_client, CreateUserRequestDict
+from clients.users.public_users_client import get_public_user_client, CreateUserRequestSchema
 from tools.fakers import get_random_email
 
 """ 
@@ -11,12 +11,12 @@ public_user_client = get_public_user_client()
 """
 Формирование данных запроса на создание пользователя с рандомным email и фиксированным паролем
 """
-create_user_request = CreateUserRequestDict(
+create_user_request = CreateUserRequestSchema(
     email = get_random_email(),
     password = "string",
-    lastName = "string",
-    firstName = "string",
-    middleName = "string",
+    last_name = "string",
+    first_name = "string",
+    middle_name = "string",
 )
 
 """
@@ -28,13 +28,13 @@ print("Create user data: ", create_user_response)
 """
 Подготовка данных для авторизации (email и пароль только что созданного пользователя)
 """
-authentication_user = AuthenticationUserDict(
-    email = create_user_request['email'],
-    password = create_user_request['password'],
+authentication_user = AuthenticationUserSchema(
+    email = create_user_request.email,
+    password = create_user_request.password,
 )
 """
 Создание приватного клиента
 """
 private_user_client = get_private_users_client(authentication_user)
-get_user_response = private_user_client.get_user(create_user_response['user']['id'])
+get_user_response = private_user_client.get_user(create_user_response.user.id)
 print("Get user data: ", get_user_response)

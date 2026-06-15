@@ -1,7 +1,7 @@
-from clients.courses.courses_client import get_private_course_client, CreateCoursesResponse, CreateCoursesRequestDict
-from clients.private_http_builder import AuthenticationUserDict
-from clients.users.public_users_client import get_public_user_client, CreateUserRequestDict
-from testdata.files.files_client import get_private_file_client, CreateFileResponse, CreateFileRequestDict
+from clients.courses.courses_client import get_private_course_client, CreateCoursesResponseSchema, CreateCoursesRequestSchema
+from clients.private_http_builder import AuthenticationUserSchema
+from clients.users.public_users_client import get_public_user_client, CreateUserRequestSchema
+from testdata.files.files_client import get_private_file_client, CreateFileResponseSchema, CreateFileRequestSchema
 from tools.fakers import get_random_email
 
 
@@ -13,12 +13,12 @@ public_user_client = get_public_user_client()
 """
 Формирование данных запроса на создание пользователя с рандомным email и фиксированным паролем
 """
-create_user_request = CreateUserRequestDict(
+create_user_request = CreateUserRequestSchema(
     email = get_random_email(),
     password = "string",
-    lastName = "string",
-    firstName = "string",
-    middleName = "string",
+    last_name = "string",
+    first_name = "string",
+    middle_name = "string",
 )
 
 """
@@ -30,9 +30,9 @@ print("Create user data: ", create_user_response)
 """
 Подготовка данных для авторизации (email и пароль только что созданного пользователя)
 """
-authentication_user = AuthenticationUserDict(
-    email = create_user_request['email'],
-    password = create_user_request['password'],
+authentication_user = AuthenticationUserSchema(
+    email = create_user_request.email,
+    password = create_user_request.password,
 )
 
 """
@@ -44,7 +44,7 @@ course_client = get_private_course_client(authentication_user)
 """
 Формирование запроса на загрузку файла: указание имени, директории и пути к локальному файлу
 """
-create_file_request = CreateFileRequestDict(
+create_file_request = CreateFileRequestSchema(
     filename="image.png",
     directory="courses",
     upload_file="./testdata/files/image.png"
@@ -59,14 +59,14 @@ print("Create file data: ", create_file_response)
 """
 Формирование запроса на создание курса: передача заголовка, баллов, описания и ID загруженного файла
 """
-create_course_request = CreateCoursesRequestDict(
+create_course_request = CreateCoursesRequestSchema(
     title= "Python for QA",
-    maxScore= 100,
-    minScore= 10,
+    max_score= 100,
+    min_score= 10,
     description= "Python API Automation course for QA",
-    estimatedTime= "2 weeks",
-    previewFileId= create_file_response['file']['id'],
-    createdByUserId= create_user_response['user']['id']
+    estimated_time= "2 weeks",
+    preview_file_id= create_file_response.file.id,
+    created_by_user_id= create_user_response.user.id
 )
 
 """
