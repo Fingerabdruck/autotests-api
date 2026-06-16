@@ -20,7 +20,7 @@ class ExercisesClient(ApiClient):
         :param query: Словарь с обязательным ключом 'courseId' (str) — ID курса для фильтрации.
         :return: Объект ответа сервера (httpx.Response); содержит JSON со списком упражнений при успехе.
         """
-        return self.get("/api/v1/exercises", params=query)
+        return self.get("/api/v1/exercises", params=query.model_dump(by_alias=True))
 
     def get_exercises(self, query: GetExercisesQuerySchema) -> GetExercisesResponseSchema:
         response = self.get_exercises_api(query)

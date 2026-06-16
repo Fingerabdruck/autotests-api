@@ -3,7 +3,7 @@ from clients.users.user_schema import UserSchema
 from testdata.files.file_schema import FileSchema
 
 
-class GetCoursesRequestSchema(BaseModel):
+class GetCoursesQuerySchema(BaseModel):
     """
     Описание структуры запроса на получение списка курсов.
     """
