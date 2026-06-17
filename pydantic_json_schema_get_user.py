@@ -3,7 +3,7 @@ from clients.private_http_builder import AuthenticationUserSchema
 from clients.users.private_users_client import get_private_users_client
 from clients.users.public_users_client import get_public_user_client
 from clients.users.user_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema
-from tools.fakers import get_random_email
+from tools.fakers import Fake
 
 public_users_client = get_public_user_client()
 

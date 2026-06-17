@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr, Field, ValidationError
 from clients.users.public_users_client import CreateUserRequestDict
-from tools.fakers import get_random_email
+from tools.fakers import Fake
 
 
 class UserSchema(BaseModel):

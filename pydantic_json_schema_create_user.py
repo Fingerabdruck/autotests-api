@@ -2,7 +2,7 @@ import jsonschema
 
 from clients.users.public_users_client import get_public_user_client
 from clients.users.user_schema import CreateUserRequestSchema, CreateUserResponseSchema
-from tools.fakers import get_random_email
+from tools.fakers import Fake
 
 public_users_client = get_public_user_client()
 

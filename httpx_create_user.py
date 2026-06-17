@@ -1,5 +1,5 @@
 import httpx
-from tools.fakers import get_random_email
+from tools.fakers import Fake
 
 payload = {
   "email": get_random_email(),
