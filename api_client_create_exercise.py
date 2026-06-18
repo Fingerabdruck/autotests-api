@@ -64,7 +64,9 @@ print("Create course data: ", create_course_response)
 """
 Формирование запроса на создание упражнения: привязка к курсу, установка баллов и параметров задания
 """
-create_exercise_request = CreateExerciseRequestSchema()
+create_exercise_request = CreateExerciseRequestSchema(
+   course_id=create_course_response.course.id,
+)
 
 """Создание упражнения на сервере и вывод результата операции
 """
