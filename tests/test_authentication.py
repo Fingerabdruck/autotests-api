@@ -1,4 +1,5 @@
 import http
+import pytest
 from authentication.authentication_client import get_authentication_client
 from authentication.authentication_schema import LoginRequestSchema, LoginResponseSchema
 from clients.private_http_builder import AuthenticationUserSchema
@@ -8,7 +9,8 @@ from tools.assertions.authentication import assert_login_response
 from tools.assertions.base import assert_status_code
 from tools.assertions.schema import validate_json_schema
 
-
+@pytest.mark.authentication
+@pytest.mark.regression
 def test_login() -> None:
     """Выполняет тестовый сценарий успешной авторизации пользователя.
     Последовательность действий:
