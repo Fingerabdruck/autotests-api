@@ -1,4 +1,3 @@
-from api_client_get_user import get_user_response, create_user_response
 from clients.users.user_schema import CreateUserRequestSchema, CreateUserResponseSchema, UserSchema, \
     GetUserResponseSchema
 from tools.assertions.base import assert_equal

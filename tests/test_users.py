@@ -5,13 +5,16 @@ from clients.users.user_schema import CreateUserRequestSchema, CreateUserRespons
 from tools.assertions.base import assert_status_code
 from tools.assertions.schema import validate_json_schema
 from tools.assertions.users import assert_create_user_response, assert_get_user_response
+from tools.fakers import fake
 
 
 @pytest.mark.users
 @pytest.mark.smoke
-def test_create_user(public_user_client: PublicUsersClient):
+@pytest.mark.parametrize("email", ["mail.ru", "gmail.com", "example.com"])
+def test_create_user(email: str, public_user_client: PublicUsersClient):
 
-    request = CreateUserRequestSchema()
+    generated_email = fake.email(domain=email)
+    request = CreateUserRequestSchema(email=generated_email)
     response = public_user_client.create_user_api(request)
     response_data = CreateUserResponseSchema.model_validate_json(response.text)
     assert_status_code(response.status_code, http.HTTPStatus.OK), 'Некорректный статус-код ответа'
