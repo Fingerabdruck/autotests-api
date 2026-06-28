@@ -40,7 +40,7 @@ class CoursesClient(ApiClient):
         response = self.create_course_api(request)
         return CreateCoursesResponseSchema.model_validate_json(response.text)
 
-    def update_course_api(self, course_id: int, request: UpdateCoursesRequestSchema) -> Response:
+    def update_course_api(self, course_id: str, request: UpdateCoursesRequestSchema) -> Response:
         """
         Метод обновления курса.
         :param course_id: Идентификатор курса.
@@ -49,7 +49,7 @@ class CoursesClient(ApiClient):
         """
         return self.patch(f"/api/v1/courses/{course_id}", json=request.model_dump(by_alias=True))
 
-    def delete_course_api(self, course_id: int) -> Response:
+    def delete_course_api(self, course_id: str) -> Response:
         """
         Метод удаления курса.
         :param course_id: Идентификатор курса.

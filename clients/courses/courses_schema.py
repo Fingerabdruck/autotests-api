@@ -7,7 +7,9 @@ class GetCoursesQuerySchema(BaseModel):
     """
     Описание структуры запроса на получение списка курсов.
     """
-    userId: int
+    model_config = ConfigDict(populate_by_name=True)
+    user_id: str = Field(alias='userId')
+
 
 class CreateCoursesRequestSchema(BaseModel):
     """
@@ -36,6 +38,8 @@ class CourseSchema(BaseModel):
     estimated_time: str = Field(alias='estimatedTime')
     created_by_user_id: UserSchema = Field(alias='createdByUser')
 
+class GetCoursesResponseSchema(BaseModel):
+    courses: list[CourseSchema]
 
 class CreateCoursesResponseSchema(BaseModel):
     """
@@ -54,3 +58,9 @@ class UpdateCoursesRequestSchema(BaseModel):
     min_score: int = Field(alias='minScore', default_factory=fake.min_score)
     description: str = Field(default_factory=fake.text)
     estimated_time: str = Field(alias='estimatedTime', default_factory=fake.estimate_time)
+
+class UpdateCoursesResponseSchema(BaseModel):
+    """
+    Описание структуры ответа на обновление курса.
+    """
+    course: CourseSchema
