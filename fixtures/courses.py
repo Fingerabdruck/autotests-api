@@ -5,7 +5,6 @@ from clients.courses.courses_client import get_private_course_client, CoursesCli
 from clients.courses.courses_schema import CreateCoursesRequestSchema, CreateCoursesResponseSchema
 from fixtures.files import FileFixture
 from fixtures.user import UserFixture
-from testdata.files.files_client import FilesClient
 
 class CourseFixture(BaseModel):
     request: CreateCoursesRequestSchema
