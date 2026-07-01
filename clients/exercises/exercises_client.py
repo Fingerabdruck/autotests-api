@@ -1,3 +1,5 @@
+import allure
+
 from clients.api_client import ApiClient
 from httpx import Response
 
@@ -13,6 +15,7 @@ class ExercisesClient(ApiClient):
     Наследуется от ApiClient, использует httpx под капотом.
     """
 
+    @allure.step("Get Exercises")
     def get_exercises_api(self, query: GetExercisesQuerySchema) -> Response:
         """
         Получает список упражнений, отфильтрованных по идентификатору курса.
@@ -26,6 +29,7 @@ class ExercisesClient(ApiClient):
         response = self.get_exercises_api(query)
         return GetExercisesResponseSchema.model_validate_json(response.text)
 
+    @allure.step("Get Exercise")
     def get_exercise_api(self, exercise_id: str) -> Response:
         """
         Получает данные конкретного упражнения по его уникальному идентификатору.
@@ -39,6 +43,7 @@ class ExercisesClient(ApiClient):
         response = self.get_exercise_api(exercise_id)
         return GetExercisesResponseSchema.model_validate_json(response.text)
 
+    @allure.step("Create Exercise")
     def create_exercise_api(self, request: CreateExerciseRequestSchema) -> Response:
         """
         Создаёт новое упражнение в системе.
@@ -53,6 +58,7 @@ class ExercisesClient(ApiClient):
         response = self.create_exercise_api(request)
         return CreateExerciseResponseSchema.model_validate_json(response.text)
 
+    @allure.step("Update Exercise")
     def update_exercise_api(self, exercise_id: str, request: UpdateExerciseRequestSchema) -> Response:
         """
         Обновляет данные существующего упражнения (частичное обновление через PATCH).
@@ -68,6 +74,7 @@ class ExercisesClient(ApiClient):
         response = self.update_exercise_api(exercise_id, request)
         return UpdateExerciseResponseSchema.model_validate_json(response.text)
 
+    @allure.step("Delete Exercise")
     def delete_exercise_api(self, exercise_id: str) -> Response:
         """
         Удаляет упражнение из системы по его идентификатору.
