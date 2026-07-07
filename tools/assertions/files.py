@@ -1,6 +1,6 @@
 import allure
 import httpx
-
+from config import settings
 from clients.errors_schema import ValidationErrorResponseSchema, ValidationErrorSchema
 from testdata.files.file_schema import CreateFileRequestSchema, CreateFileResponseSchema, FileSchema, \
     GetFileResponseSchema
@@ -9,7 +9,7 @@ from tools.assertions.errors import assert_validation_error_response
 
 @allure.step("Check create file response")
 def assert_create_file_response(request: CreateFileRequestSchema, response: CreateFileResponseSchema):
-    expected_url = f"http://localhost:8000/static/{request.directory}/{request.filename}"
+    expected_url = f'{settings.http_client.client_url}static/{request.directory}/{request.filename}'
 
     assert_equal(str(response.file.url), expected_url, "url")
     assert_equal(response.file.filename, request.filename, "filename")
