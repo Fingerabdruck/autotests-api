@@ -6,6 +6,7 @@ from httpx import Response
 from clients.exercises.exercises_schema import GetExercisesQuerySchema, GetExercisesResponseSchema, \
     CreateExerciseRequestSchema, CreateExerciseResponseSchema, UpdateExerciseRequestSchema, UpdateExerciseResponseSchema
 from clients.private_http_builder import get_private_http_builder,  AuthenticationUserSchema
+from tools.routes import APIRoutes
 
 
 class ExercisesClient(ApiClient):
@@ -23,7 +24,7 @@ class ExercisesClient(ApiClient):
         :param query: Словарь с обязательным ключом 'courseId' (str) — ID курса для фильтрации.
         :return: Объект ответа сервера (httpx.Response); содержит JSON со списком упражнений при успехе.
         """
-        return self.get("/api/v1/exercises", params=query.model_dump(by_alias=True))
+        return self.get(APIRoutes.EXERCISES, params=query.model_dump(by_alias=True))
 
     def get_exercises(self, query: GetExercisesQuerySchema) -> GetExercisesResponseSchema:
         response = self.get_exercises_api(query)
@@ -37,7 +38,7 @@ class ExercisesClient(ApiClient):
         :param exercise_id: Строка (str) с UUID упражнения, данные которого требуется получить.
         :return: Объект ответа сервера (httpx.Response); содержит JSON с данными упражнения при успехе.
         """
-        return self.get(f"/api/v1/exercises/{exercise_id}")
+        return self.get(f"{APIRoutes.EXERCISES}/{exercise_id}")
 
     def get_exercise(self, exercise_id: str) -> GetExercisesResponseSchema:
         response = self.get_exercise_api(exercise_id)
@@ -52,7 +53,7 @@ class ExercisesClient(ApiClient):
         поля maxScore, minScore, orderIndex и estimatedTime могут быть None.
         :return: Объект ответа сервера (httpx.Response); при успехе содержит данные созданного упражнения и статус 201.
         """
-        return self.post("/api/v1/exercises", json=request.model_dump(by_alias=True))
+        return self.post(APIRoutes.EXERCISES, json=request.model_dump(by_alias=True))
 
     def create_exercise(self, request: CreateExerciseRequestSchema) -> CreateExerciseResponseSchema:
         response = self.create_exercise_api(request)
@@ -68,7 +69,7 @@ class ExercisesClient(ApiClient):
         orderIndex, description, estimatedTime) обязательны к передаче.
         :return: Объект ответа сервера (httpx.Response); при успехе содержит обновлённые данные упражнения.
         """
-        return self.patch(f"/api/v1/exercises/{exercise_id}", json=request.model_dump(by_alias=True))
+        return self.patch(f"{APIRoutes.EXERCISES}/{exercise_id}", json=request.model_dump(by_alias=True))
 
     def update_exercise(self, exercise_id: str, request: UpdateExerciseRequestSchema) -> UpdateExerciseResponseSchema:
         response = self.update_exercise_api(exercise_id, request)

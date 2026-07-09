@@ -5,7 +5,7 @@ from httpx import Response
 from clients.courses.courses_schema import GetCoursesQuerySchema, CreateCoursesRequestSchema, \
     CreateCoursesResponseSchema, UpdateCoursesRequestSchema
 from clients.private_http_builder import get_private_http_builder, AuthenticationUserSchema
-
+from tools.routes import APIRoutes
 
 
 class CoursesClient(ApiClient):
@@ -20,7 +20,7 @@ class CoursesClient(ApiClient):
         :param query: Словарь с userId.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.get("/api/v1/courses", params=query.model_dump(by_alias=True))
+        return self.get(APIRoutes.COURSES, params=query.model_dump(by_alias=True))
 
     @allure.step("Get course by id {course_id}")
     def get_course_api(self, course_id: int) -> Response:
@@ -29,7 +29,7 @@ class CoursesClient(ApiClient):
         :param course_id: Идентификатор курса.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.get(f"/api/v1/courses/{course_id}")
+        return self.get(f"{APIRoutes.COURSES}/{course_id}")
 
     @allure.step("Create course")
     def create_course_api(self, request: CreateCoursesRequestSchema) -> Response:
@@ -39,7 +39,7 @@ class CoursesClient(ApiClient):
         previewFileId, createdByUserId.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.post("/api/v1/courses", json=request.model_dump(by_alias=True))
+        return self.post(APIRoutes.COURSES, json=request.model_dump(by_alias=True))
 
     def create_course(self, request: CreateCoursesRequestSchema) -> CreateCoursesResponseSchema:
         response = self.create_course_api(request)
@@ -53,7 +53,7 @@ class CoursesClient(ApiClient):
         :param request: Словарь с title, maxScore, minScore, description, estimatedTime.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.patch(f"/api/v1/courses/{course_id}", json=request.model_dump(by_alias=True))
+        return self.patch(f"{APIRoutes.COURSES}/{course_id}", json=request.model_dump(by_alias=True))
 
     @allure.step("Delete course by id {course_id}")
     def delete_course_api(self, course_id: str) -> Response:
@@ -62,7 +62,7 @@ class CoursesClient(ApiClient):
         :param course_id: Идентификатор курса.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.delete(f"/api/v1/courses/{course_id}")
+        return self.delete(f"{APIRoutes.COURSES}/{course_id}")
 
 def get_private_course_client(user: AuthenticationUserSchema) -> CoursesClient:
     return CoursesClient(client=get_private_http_builder(user))
