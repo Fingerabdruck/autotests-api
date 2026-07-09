@@ -12,9 +12,9 @@ from tools.allure.features import AllureFeature
 from tools.allure.stories import AllureStory
 from tools.allure.tags import AllureTag
 from tools.assertions.base import assert_status_code
-from tools.assertions.errors import assert_file_not_found_response
 from tools.assertions.files import assert_create_file_response, assert_create_file_with_empty_filename_response, \
-    assert_create_file_with_empty_directory_response, assert_get_file_with_incorrect_file_id_response
+    assert_create_file_with_empty_directory_response, assert_get_file_with_incorrect_file_id_response, \
+    assert_file_not_found_response
 from tools.assertions.schema import validate_json_schema
 from config import settings
 
