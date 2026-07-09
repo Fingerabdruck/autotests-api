@@ -1,0 +1,20 @@
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:29 Make POST request to http://localhost:8000/api/v1/users
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:39 Got response 200 OK from http://localhost:8000/api/v1/users
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:29 Make POST request to http://localhost:8000/api/v1/authentication/login
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:39 Got response 200 OK from http://localhost:8000/api/v1/authentication/login
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:29 Make POST request to http://localhost:8000/api/v1/files
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:39 Got response 200 OK from http://localhost:8000/api/v1/files
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:29 Make POST request to http://localhost:8000/api/v1/courses
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:39 Got response 200 OK from http://localhost:8000/api/v1/courses
+[32mINFO    [0m BASE_ASSERTIONS:base.py:11 Check that response status code equals to 200
+[32mINFO    [0m COURSES_ASSERTIONS:courses.py:81 Check create course response
+[32mINFO    [0m BASE_ASSERTIONS:base.py:21 Check that "title" equals to Less prepare pick window.
+[32mINFO    [0m BASE_ASSERTIONS:base.py:21 Check that "max_score" equals to 68
+[32mINFO    [0m BASE_ASSERTIONS:base.py:21 Check that "min_score" equals to 30
+[32mINFO    [0m BASE_ASSERTIONS:base.py:21 Check that "description" equals to American study young focus control.
+Certain lose skin current course source. Red voice student treat. Member travel agency whom worker.
+Place process simply five. Drug although star floor difficult.
+[32mINFO    [0m BASE_ASSERTIONS:base.py:21 Check that "estimated_time" equals to 4 weeks
+[32mINFO    [0m BASE_ASSERTIONS:base.py:21 Check that "file_id" equals to 4a851342-c3d7-4a30-97d3-4bb5bd709e61
+[32mINFO    [0m BASE_ASSERTIONS:base.py:21 Check that "created_by_user_id" equals to 98ca0b90-0457-4032-8fc5-474f7b50af56
+[32mINFO    [0m SCHEMA_ASSERTIONS:schema.py:19 Validating JSON schema

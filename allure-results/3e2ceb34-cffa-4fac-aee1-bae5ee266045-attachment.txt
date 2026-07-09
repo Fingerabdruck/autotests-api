@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI2LTA3LTA5VDIwOjI5OjMyLjYxMTk2OCIsInVzZXJfaWQiOiJhNzJlMWJmMS04NDdmLTQ5YjgtYmI1Mi01YWQ4MzM0YjYwZGIifQ.bzGhyXsOAZ5OoB6kgkwgn6tjL2w-zFJx5levF3uwVOw' \
+  -H 'content-length: 405' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Unit goal structure tree whom reality.","maxScore":89,"minScore":2,"description":"Why improve yeah prove president. Charge event adult.\nWind dinner example almost someone knowledge.\nRaise field whatever second. Father able water wonder forward seat nor.","estimatedTime":"4 weeks","previewFileId":"fe5820ac-8fa7-47e5-8a0a-429bb10a3fd6","createdByUserId":"a72e1bf1-847f-49b8-bb52-5ad8334b60db"}'

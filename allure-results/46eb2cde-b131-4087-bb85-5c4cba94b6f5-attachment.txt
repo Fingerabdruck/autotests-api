@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI2LTA3LTA5VDIwOjI5OjMxLjI4OTQ4NCIsInVzZXJfaWQiOiJkNzQ3MDUwYi04NmViLTQyZDgtOTQ1ZC00NDk3ODU0ZDQzMWUifQ.7sFhKL_5evL-dVYsjfiy03SIJKHOkW39Ge_LD9xrawU' \
+  -H 'content-length: 319' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Military space training their.","maxScore":67,"minScore":3,"description":"Such floor rise explain take beat newspaper. Ago represent defense beat continue edge kid very.","estimatedTime":"5 weeks","previewFileId":"f46666f4-845c-4782-9913-fcd02854eee7","createdByUserId":"d747050b-86eb-42d8-945d-4497854d431e"}'

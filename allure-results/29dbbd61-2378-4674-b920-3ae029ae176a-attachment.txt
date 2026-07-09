@@ -1,0 +1,27 @@
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:29 Make POST request to http://localhost:8000/api/v1/users
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:39 Got response 200 OK from http://localhost:8000/api/v1/users
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:29 Make POST request to http://localhost:8000/api/v1/authentication/login
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:39 Got response 200 OK from http://localhost:8000/api/v1/authentication/login
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:29 Make POST request to http://localhost:8000/api/v1/files
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:39 Got response 200 OK from http://localhost:8000/api/v1/files
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:29 Make POST request to http://localhost:8000/api/v1/courses
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:39 Got response 200 OK from http://localhost:8000/api/v1/courses
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:29 Make POST request to http://localhost:8000/api/v1/exercises
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:39 Got response 200 OK from http://localhost:8000/api/v1/exercises
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:29 Make GET request to http://localhost:8000/api/v1/exercises?courseId=75d4f0a9-e554-4f3b-b069-62e9e651e017
+[32mINFO    [0m HTTP_CLIENT:event_hooks.py:39 Got response 200 OK from http://localhost:8000/api/v1/exercises?courseId=75d4f0a9-e554-4f3b-b069-62e9e651e017
+[32mINFO    [0m BASE_ASSERTIONS:base.py:11 Check that response status code equals to 200
+[32mINFO    [0m EXERCISES_ASSERTIONS:exercises.py:81 Check get exercises response
+[32mINFO    [0m BASE_ASSERTIONS:base.py:55 Check that length of "exercises" equals to 1
+[32mINFO    [0m EXERCISES_ASSERTIONS:exercises.py:22 Check exercise
+[32mINFO    [0m BASE_ASSERTIONS:base.py:21 Check that "id" equals to 7f2ac003-9200-44a2-ae27-f53d3b4657cb
+[32mINFO    [0m BASE_ASSERTIONS:base.py:21 Check that "title" equals to Arm back style rule deep.
+[32mINFO    [0m BASE_ASSERTIONS:base.py:21 Check that "max_score" equals to 58
+[32mINFO    [0m BASE_ASSERTIONS:base.py:21 Check that "course_id" equals to 75d4f0a9-e554-4f3b-b069-62e9e651e017
+[32mINFO    [0m BASE_ASSERTIONS:base.py:21 Check that "min_score" equals to 3
+[32mINFO    [0m BASE_ASSERTIONS:base.py:21 Check that "description" equals to Matter smile them heavy play out. President within wait worry resource despite.
+Bill laugh campaign point.
+Prepare style hair concern spend. Minute reach end remember among.
+[32mINFO    [0m BASE_ASSERTIONS:base.py:21 Check that "order_index" equals to 34
+[32mINFO    [0m BASE_ASSERTIONS:base.py:21 Check that "estimated_time" equals to 6 weeks
+[32mINFO    [0m SCHEMA_ASSERTIONS:schema.py:19 Validating JSON schema

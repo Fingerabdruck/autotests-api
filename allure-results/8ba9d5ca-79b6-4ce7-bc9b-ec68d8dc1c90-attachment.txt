@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI2LTA3LTA5VDIwOjI5OjMxLjczMzYwNCIsInVzZXJfaWQiOiI5OGNhMGI5MC0wNDU3LTQwMzItOGZjNS00NzRmN2I1MGFmNTYifQ.2dDp8efLWcvXjWMFDPKgjEdGGPfpFqzIHppIvmfk5ns' \
+  -H 'content-length: 420' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Less prepare pick window.","maxScore":68,"minScore":30,"description":"American study young focus control.\nCertain lose skin current course source. Red voice student treat. Member travel agency whom worker.\nPlace process simply five. Drug although star floor difficult.","estimatedTime":"4 weeks","previewFileId":"4a851342-c3d7-4a30-97d3-4bb5bd709e61","createdByUserId":"98ca0b90-0457-4032-8fc5-474f7b50af56"}'

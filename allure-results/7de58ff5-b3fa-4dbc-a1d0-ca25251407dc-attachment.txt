@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI2LTA3LTA5VDIwOjI5OjM0LjAzOTQ4MiIsInVzZXJfaWQiOiIwMTBjY2FmYy1iYTc0LTQ1NWEtOGJiNC00YzE3MmQ4ZWZmMTgifQ.uBXCe2PZBeQXB_73UnOhf9LoDXzi53aLMkzFnhXZDbE' \
+  -H 'content-length: 425' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Beautiful property street life.","maxScore":80,"minScore":7,"description":"Increase more find next the. Bank others human religious fight culture law.\nFast once often. Office experience paper unit they science want research. Specific billion least vote sure suffer Congress.","estimatedTime":"5 weeks","previewFileId":"7e1c3263-b804-427a-a29a-4c48d5b4eb3e","createdByUserId":"010ccafc-ba74-455a-8bb4-4c172d8eff18"}'

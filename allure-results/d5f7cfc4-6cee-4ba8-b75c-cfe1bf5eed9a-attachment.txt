@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI2LTA3LTA5VDIwOjI5OjMzLjA1MTUwMSIsInVzZXJfaWQiOiI5MjAwYTlmMS0wM2U2LTRmODktOTE3My00YTAwMDBiMGNmNmYifQ.cS9sRmOUoAj-UzJcD9tWU6ryfQiy5K-TEFZb0v-SMPE' \
+  -H 'content-length: 351' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Front employee indicate game must son.","maxScore":52,"minScore":5,"description":"Safe generation allow several agent defense picture. In back store section safe state laugh. Population try ground why.","estimatedTime":"6 weeks","previewFileId":"5feb27a4-0950-42db-8f3d-cd5cd955f4f4","createdByUserId":"9200a9f1-03e6-4f89-9173-4a0000b0cf6f"}'
