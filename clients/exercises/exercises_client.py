@@ -3,6 +3,7 @@ import allure
 from clients.api_client import ApiClient
 from httpx import Response
 
+from clients.api_coverage import tracker
 from clients.exercises.exercises_schema import GetExercisesQuerySchema, GetExercisesResponseSchema, \
     CreateExerciseRequestSchema, CreateExerciseResponseSchema, UpdateExerciseRequestSchema, UpdateExerciseResponseSchema
 from clients.private_http_builder import get_private_http_builder,  AuthenticationUserSchema
@@ -17,6 +18,7 @@ class ExercisesClient(ApiClient):
     """
 
     @allure.step("Get Exercises")
+    @tracker.track_coverage_httpx(APIRoutes.EXERCISES)
     def get_exercises_api(self, query: GetExercisesQuerySchema) -> Response:
         """
         Получает список упражнений, отфильтрованных по идентификатору курса.
@@ -31,6 +33,7 @@ class ExercisesClient(ApiClient):
         return GetExercisesResponseSchema.model_validate_json(response.text)
 
     @allure.step("Get Exercise")
+    @tracker.track_coverage_httpx(f"{APIRoutes.EXERCISES}/{{exercise_id}}")
     def get_exercise_api(self, exercise_id: str) -> Response:
         """
         Получает данные конкретного упражнения по его уникальному идентификатору.
@@ -45,6 +48,7 @@ class ExercisesClient(ApiClient):
         return GetExercisesResponseSchema.model_validate_json(response.text)
 
     @allure.step("Create Exercise")
+    @tracker.track_coverage_httpx(APIRoutes.EXERCISES)
     def create_exercise_api(self, request: CreateExerciseRequestSchema) -> Response:
         """
         Создаёт новое упражнение в системе.
@@ -60,6 +64,7 @@ class ExercisesClient(ApiClient):
         return CreateExerciseResponseSchema.model_validate_json(response.text)
 
     @allure.step("Update Exercise")
+    @tracker.track_coverage_httpx(f"{APIRoutes.EXERCISES}/{{exercise_id}}")
     def update_exercise_api(self, exercise_id: str, request: UpdateExerciseRequestSchema) -> Response:
         """
         Обновляет данные существующего упражнения (частичное обновление через PATCH).
@@ -76,6 +81,7 @@ class ExercisesClient(ApiClient):
         return UpdateExerciseResponseSchema.model_validate_json(response.text)
 
     @allure.step("Delete Exercise")
+    @tracker.track_coverage_httpx(f"{APIRoutes.EXERCISES}/{{exercise_id}}")
     def delete_exercise_api(self, exercise_id: str) -> Response:
         """
         Удаляет упражнение из системы по его идентификатору.
@@ -84,7 +90,7 @@ class ExercisesClient(ApiClient):
         :return: Объект ответа сервера (httpx.Response); при успехе обычно имеет статус 204 (No Content) или
         содержит подтверждение удаления.
         """
-        return self.delete(f"/api/v1/exercises/{exercise_id}")
+        return self.delete(f"{APIRoutes.EXERCISES}/{exercise_id}")
 
 def get_exercise_client(user: AuthenticationUserSchema ) -> ExercisesClient:
     """
