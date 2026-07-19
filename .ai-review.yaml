@@ -36,4 +36,4 @@ prompt:
   summary_prompt_files: [ ./prompts/summary.md ]
 
 logger:
-  level: INFO                   # Уровень логирования
+  level: INFO                   # Уровень логированиYa
