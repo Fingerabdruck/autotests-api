@@ -1,0 +1,39 @@
+# ===============================
+# AI Review configuration file
+# ===============================
+
+llm:
+  provider: GEMINI                # Провайдер LLM: OPENAI, GEMINI, CLAUDE, OLLAMA
+  meta:
+    model: gemini-2.0-pro            # Название модели
+    max_tokens: 1200              # Максимальное количество токенов в ответе
+    temperature: 0.3              # Строгость/креативность ответов (0 — максимально детерминированный)
+  http_client:
+    api_url: https://generativelanguage.googleapis.com  # URL API провайдера
+    api_token: ${GEMINI_API_KEY}        # Токен для доступа (будем создавать позже)
+
+vcs:
+  provider: GITHUB               # Система контроля версий: GITHUB, GITLAB, BITBUCKET
+  pipeline:
+    owner: ${GITHUB_REPOSITORY_OWNER}   # Владелец репозитория
+    repo: ${GITHUB_REPOSITORY_NAME}     # Название репозитория
+    pull_number: ${PR_NUMBER}           # Номер Pull Request
+  http_client:
+    api_url: https://api.github.com
+    api_token: ${GITHUB_TOKEN}          # Токен GitHub (создадим позже)
+
+core:
+  concurrency: 7                # Количество параллельных задач при запросах к LLM и VCS
+
+review:
+  mode: FULL_FILE_DIFF          # Что анализировать: изменения в diff, только добавленные строки и т.д.
+  dry_run: false                # Если true — ревью выполняется, но комментарии не публикуются
+  max_inline_comments: 50       # Ограничение на количество комментариев
+
+prompt:
+  inline_prompt_files: [ ./prompts/inline.md ]
+  context_prompt_files: [ ./prompts/inline.md ]
+  summary_prompt_files: [ ./prompts/summary.md ]
+
+logger:
+  level: INFO                   # Уровень логирования
